@@ -4,12 +4,17 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	_ "github.com/iheanyi/go-vue-statik/cmd/sampleapp/statik"
 	"github.com/rakyll/statik/fs"
 )
 
 func main() {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "1337"
+	}
 	statikFS, err := fs.New()
 	if err != nil {
 		log.Fatal(err)
@@ -22,5 +27,5 @@ func main() {
 		staticHandler.ServeHTTP(w, r)
 	})
 	http.Handle("/static/", staticHandler)
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":"+port, nil)
 }
