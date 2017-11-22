@@ -1,6 +1,6 @@
-metadata.heroku['root-package']
+[metadata.heroku]
   root-package = "github.com/iheanyi/go-vue-statik"
-  install = [ "./..."]
+  install = [ "./cmd/..."]
   ensure = "true"
 # Gopkg.toml example
 #
